@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import * as request from "superagent";
 import { url } from "./constants";
+import { Button } from '@material-ui/core'
 
 export default class App extends Component {
   // declared the state to storethe fetched photos from unsplash API.
@@ -10,12 +11,25 @@ export default class App extends Component {
   };
   componentDidMount() {
     // Using GET method getting the photos from unsplash API.
-    request.get(url).then(item => {
+    request.get(url).then(image => {
       this.setState({
-        photos: item.body
+        photos: image.body
       });
       console.log("results fromstate", this.state.photos);
     });
+  }
+  //onLoadMore arrow function to load more photos 
+  onLoadMore = () => {
+    //requesting unsplash API 
+    request.get(url).then(image => {
+    //setstate by doing spread operator
+      this.setState({
+        photos:[...this.state.photos,...image.body]
+      })
+
+      console.log("load more photos",this.state.photos)
+
+    })
   }
   render() {
     return (
@@ -30,6 +44,10 @@ export default class App extends Component {
             ))}
           </ul>
         )}
+        {/* button to load more photos on click event */}
+        <div>
+        <Button variant="contained" color="primary" onClick={this.onLoadMore}>Load More</Button>
+        </div>
       </div>
     );
   }

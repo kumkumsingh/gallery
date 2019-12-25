@@ -3,4 +3,4 @@ const client_id = "509db171d8bf090c681b10fd3266dcd6b54fa9c56d1b8a2a673a217553bdd
 //This is the basic url to get random photos of count 5 and client_id is required to access them from unsplash API.
 // export const url ="https://api.unsplash.com/photos?client_id="+client_id
 
-export const url ="https://api.unsplash.com/photos/random?count=4&client_id="+client_id
+export const url ="https://api.unsplash.com/photos/random?count=5&client_id="+client_id
