@@ -1,20 +1,33 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import * as request from "superagent";
-import { url }from './constants'
+import { url } from "./constants";
 
-function App() {
-  request
-  .get(url)
-  .then(photos => {
-    console.log("results",photos.body)
-  })
-
-  return (
-    <div className="App">
-      My Gallery
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    photos: []
+  };
+  componentDidMount() {
+    request.get(url).then(item => {
+      this.setState({
+        photos: item.body
+      });
+      console.log("results fromstate", this.state.photos[0].urls);
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Gallery</h1>
+        {!this.state.photos && "Loading..."}
+        {this.state.photos && (
+          <ul>
+            {this.state.photos.map(photo => (
+              <img key={photo.id} src={photo.urls.regular} alt="Dog" />
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  }
 }
-
-export default App;
