@@ -14,19 +14,19 @@ export default class App extends Component {
       this.setState({
         photos: item.body
       });
-      console.log("results fromstate", this.state.photos[0].urls);
+      console.log("results fromstate", this.state.photos);
     });
   }
   render() {
     return (
-      <div>
+      <div className="App">
         <h1>My Gallery</h1>
         {/* If there is no photos available display loading otherwise display photos  */}
         {!this.state.photos && "Loading..."}
         {this.state.photos && (
-          <ul>
+          <ul className="grid-image-container">
             {this.state.photos.map(photo => (
-              <img key={photo.id} src={photo.urls.regular} alt="Dog" />
+              <img key={photo.id} src={photo.urls.regular} alt={photo.alt_description} className="grid-image-item"/>
             ))}
           </ul>
         )}
