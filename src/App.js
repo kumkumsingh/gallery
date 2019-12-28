@@ -91,6 +91,7 @@ export default class App extends Component {
                           (this.state.index + 1) % this.state.photos.length
                       })
                     }
+                    imageTitle={this.state.photos[this.state.index].alt_description}
                   />
                 )}
 

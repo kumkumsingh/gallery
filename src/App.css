@@ -4,29 +4,31 @@
   background-color:grey;
   min-height: 100vh;
 }
+.grid-image-container {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-gap: 0px;
+  grid-template-columns: repeat(4, 1fr);
+  padding-inline-start: 10px;
+}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media only screen and (min-width: 720px) and (max-width: 960px) {
+  .grid-image-container {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: repeat(3, 1fr);
+    padding-inline-start: 10px;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .grid-image-container {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline-start: 10px;
   }
 }
 
-/* .App-header {
-  background-color:grey;
-  min-height: 100vh;
-  display: column;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-.grid-image-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
-
-}
 
 .grid-image-item {
   width: 95%;
@@ -37,22 +39,6 @@
   border: 5px solid #222;
   object-fit: cover;
   cursor: pointer;
-}
-
-#lightbox {
-/** Position and style */
-	position: fixed;
-	z-index: 10000;
-	width: 100%;
-	height: 100%;
-  top: 0;
-  background-color:black;
-  display:none;
-}
-#lightbox.active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 
